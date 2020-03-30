@@ -1,5 +1,8 @@
 float[] values;
 
+// `Need to make loop variables global so its accessible by draw function
+int i = 0;
+int j = 0;
 void setup () {
   // Create canvas and array of random floats based on height/width
   size(800,500);
@@ -9,15 +12,11 @@ void setup () {
   }
   
    //values = sort(values);
-  for (int i = 0; i < values.length; i++) {
-    for (int j = 0; j < values.length-i-1; j++){
-      float a = values[j];
-      float b = values[j+1];
-      if (a > b) {
-        swap(values, j, j+1);
-      }
-    }
-  }
+  //for (int i = 0; i < values.length; i++) {
+  //  for (int j = 0; j < values.length-i-1; j++){
+
+  //  }
+  //}
 }
 
 void swap (float[] arr, int a, int b){
@@ -34,4 +33,18 @@ void draw(){
     stroke(255);
     line(i, height, i, height - values[i]);
   }
+        
+      if(i < values.length){
+        for(int j = 0; j < values.length-i-1; j++){
+          float a = values[j];
+          float b = values[j+1];
+          if (a > b) {
+            swap(values, j, j+1);
+          }
+        }
+      } else {
+        println("finished");
+        noLoop();
+      }
+      i++;
 }
