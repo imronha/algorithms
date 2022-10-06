@@ -21,3 +21,42 @@ Constraints:
 -231 <= nums[i] <= 231 - 1
 
 */
+
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+ var moveZeroes = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            nums.splice(i, 1);
+            nums.push(0);
+        }
+        
+    }
+};
+
+
+
+/*
+Failed 1 test case
+[0, 0, 1]
+
+
+ var moveZeroes = function(nums) {
+    let zeroCount = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            nums.splice(i, 1);
+            zeroCount++
+        }   
+    }
+    console.log(zeroCount)
+    while (zeroCount != 0) {
+        nums.push(0);
+        zeroCount--
+    }
+};
+
+*/
