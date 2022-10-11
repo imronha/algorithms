@@ -23,32 +23,29 @@ Constraints:
 */
 
 
-/**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
- */
- var moveZeroes = function(nums) {
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === 0) {
-            nums.splice(i, 1);
-            nums.push(0);
-        }
-        
-    }
-};
+// This approach iterates through the array two times
+// First iteration just moves all the non zero numbers to the left of the array
+// Second iteration replaces all the other numbers with 0's
+// Uses one pointer to start at the 0th item and loops through to see if we need to move the item or not
+// Time complexity = O(2N) because of the two iterations through the array, which is basically O(N)
+// Space complexity = O(1) in place
 
 var moveZeroes = function(nums) {
-    let left = 0;
-    for (let right = 1; right < nums.length; right++) {
-        if (nums[left] != 0) {
-            var temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
+    let index = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        let num = nums[i]
+
+        if (num !== 0) {
+            nums[index] = num;
+            index++;
         }
-        
+    }
+
+    for (let i = index; i < nums.length; i++) {
+        nums[i] = 0;
     }
 };
-
 
 /*
 Using a two pointer approach i.e. read, write pointers. We'll move from the start to the end of the array.
