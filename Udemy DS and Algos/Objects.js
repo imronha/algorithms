@@ -27,3 +27,5 @@ class Wizard extends Player {
 }
 const wizard1 = new Wizard('Shelly' , 'Healer');
 const wizard2 = new Wizard('Shawn' , 'Dark Magic');
+
+// Implementing Hash tables from scratch
