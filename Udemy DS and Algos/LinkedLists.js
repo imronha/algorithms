@@ -71,8 +71,6 @@ class LinkedList {
         return this.printList()
     }
 
-  
-
     traverseToIndex(index){
         let counter = 0;
         let currentNode = this.head;
@@ -83,8 +81,13 @@ class LinkedList {
         return currentNode;
     }
 
-    delete(){
-
+    remove(index){
+        // Check params
+        const leader = this.traverseToIndex(index-1);
+        const tempPointer = leader.next.next;
+        leader.next = tempPointer;
+        this.length--
+        return this.printList()
     }
 }
 
