@@ -75,3 +75,16 @@ newArray.push( ' are');
 newArray.push('nice');
 newArray.delete(1)
 console.log(newArray);
+
+
+var reverseString = function(s) {
+    var right = s.length-1;
+
+    for (let i = 0; i < Math.floor(s.length/2); i++) {
+        var temp = s[i];
+        s[i] = s[right];
+        s[right] = temp;
+        right--;
+    }
+    return s;
+}
