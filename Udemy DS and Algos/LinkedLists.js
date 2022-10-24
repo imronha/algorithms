@@ -59,6 +59,10 @@ class LinkedList {
     }
     insert(index, value){
         // Check params
+
+        // Check special cases
+        // When new head is inserted
+        // When new tail is inserted
         if(index >= this.length){
             return this.append(value);
         }
@@ -83,6 +87,9 @@ class LinkedList {
 
     remove(index){
         // Check params
+        // Check special cases
+        // When new head is removed
+        // When new tail is removed
         const leader = this.traverseToIndex(index-1);
         const tempPointer = leader.next.next;
         leader.next = tempPointer;
