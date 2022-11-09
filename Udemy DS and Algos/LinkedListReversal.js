@@ -90,6 +90,7 @@ class LinkedList {
     }
 
     reverse(){
+        // https://www.geeksforgeeks.org/reverse-a-linked-list/
         // Check input
         // If only 1 node, return the node
         if (!this.head.next) {
@@ -100,10 +101,10 @@ class LinkedList {
         this.tail = this.head;
         let second = first.next;
         while(second) {
-        const temp = second.next;
-        second.next = first;
-        first second;
-        second temp;
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
         }
         this.head.next = null;
         this.head = first;
@@ -115,3 +116,53 @@ const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(23);
 console.log(myLinkedList)
+
+
+/*
+
+https://leetcode.com/problems/reverse-linked-list/
+
+206. Given the head of a singly linked list, reverse the list, and return the reversed list.
+Example 1:
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+/**
+ 
+@param {ListNode} head
+@return {ListNode}
+ 
+ var reverseList = function(head) {
+    // 1 -> 2 -> 3 -> 4 -> 5 -> 6
+  
+  let previous = null;
+  let current = head;
+  let next = null;
+  while(current != null) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+  }
+  
+  head = previous;
+  return head
+};
+
+
+*/
+
