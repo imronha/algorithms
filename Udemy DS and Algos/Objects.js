@@ -75,6 +75,9 @@ class HashTable {
 		}
 	}
 
+	/*
+	Doesnt account for collisions
+
 	keys(){
 		const keysArray = [];
 		for (let i = 0; i < this.data.length; i++) {
@@ -85,6 +88,27 @@ class HashTable {
 		}
 		return keysArray;
 	}
+
+	*/
+
+	// Accounts for collisions
+	keys() {
+		if (!this.data.length) return undefined;
+	 
+		const result = [];
+		for (let i = 0; i < this.data.length; i++) {
+		  if (this.data[i] && this.data[i].length) {
+			if (this.data[i].length > 1) {
+			  for (let j = 0; j < this.data[i].length; j++) {
+				result.push(this.data[i][j][0]);
+			  }
+			} else {
+			  result.push(this.data[i][0][0]);
+			}
+		  }
+		}
+		return result;
+	  }
 
 	values() {
 		const valuesArray = [];
