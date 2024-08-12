@@ -43,6 +43,7 @@ Describe the naiive solution:
 Nested for loop with one pointer for each loop and checking to see if every combination of items will add to target
 First for loop will have one pointer
 Second for loop will have another pointer that is one ahead of the first for loop
+If the sum of the number at the first pointer and the number at the second number = target, return the indices
 
 5. Why this approach is not the best
 Space and time complexity
@@ -51,7 +52,45 @@ Time complexity: a +
 
 */
 
+// ========================================================================
 
+/* PASSES ALL TEST CASES
+Time complexity: O(n^2) because of the double for loop
+Space complexity: 0(1) because no data structures are being used
+
+*/
+
+var twoSum = function(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i+1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+            
+        }
+        
+    }
+};
+
+// ========================================================================
+
+/* The following solution will fail the following test case 
+nums =
+[2,5,5,11]
+target =
+10
+
+Use Testcase
+Output
+[1,1]
+Expected
+[1,2]
+
+The issue with the current implementation of the twoSum function lies in the inner loop, where the starting index j is always set to 1. This causes the function to potentially consider the same element twice, leading to incorrect results like [1,1].
+
+To fix this, you should start the inner loop from the index just after i (i.e., j = i + 1).
+
+*/
 var twoSum = function(nums, target) {
     for (let i = 0; i < nums.length; i++) {
         for (let j = 1; j < nums.length; j++) {
@@ -64,17 +103,7 @@ var twoSum = function(nums, target) {
     }
 };
 
-var twoSum = function(nums, target) {
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j];
-            }
-            
-        }
-        
-    }
-};
+// ========================================================================
 
 
 // https://www.youtube.com/watch?v=IufUNRCQ37E&ab_channel=ThinkFWD
